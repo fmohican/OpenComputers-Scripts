@@ -1,19 +1,23 @@
-local component = require'component'
-local rs = component.redstone
+local component = require("component")
 local sides = require('sides')
 local term = require("term")
 local event = require("event")
 local cube = component.ultimate_energy_cube
 
+local e_one = component.proxy(component.get("19bdf2ae"))
+local e_two = component.proxy(component.get("462ff3fc"))
+
 local function TurnOff()
 	print("Energy level is O.K. TurnOff machines.")
-	rs.setOutput(sides.back, 0)
+	e_one.setOutput(sides.back, 0)
+	e_two.setOutput(sides.front, 0)
 	return true
 end
 
 local function TurnOn()
 	print("Current Energy is Low. TurnOn Machines")
-	rs.setOutput(sides.back, 15)
+	e_one.setOutput(sides.back, 15)
+	e_two.setOutput(sides.front, 15)
 	return true
 end
 
